@@ -22,7 +22,7 @@ class ActiveSupport::TestCase
   end
 
    # Log in as a particular user.
-   def log_in_as(user)
+   def log_in_as(user)   #chapter 9
     session[:user_id] = user.id
   end
 end
@@ -30,7 +30,7 @@ end
 class ActionDispatch::IntegrationTest
 
   # Log in as a particular user.
-  def log_in_as(user, password: 'password', remember_me: '1')
+  def log_in_as(user, password: 'password', remember_me: '1')   #chapter 9
     post login_path, params: { session: { email: user.email,
                                           password: password,
                                           remember_me: remember_me } }

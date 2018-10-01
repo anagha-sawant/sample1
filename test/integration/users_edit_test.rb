@@ -1,13 +1,13 @@
 require 'test_helper'
-
+#chapter 10
 class UsersEditTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:michael)
   end
-
+ #1
   test "unsuccessful edit" do
-    log_in_as(@user)
+    log_in_as(@user) #changed from previous one
     get edit_user_path(@user)
     assert_template 'users/edit'
     patch user_path(@user), params: { user: { name:  "",
@@ -17,7 +17,8 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 
     assert_template 'users/edit'
   end
-
+ 
+  #2
   test "successful edit" do
     log_in_as(@user)
     get edit_user_path(@user)
@@ -35,6 +36,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_equal email, @user.email
   end
 
+  #3
   test "successful edit with friendly forwarding" do
     get edit_user_path(@user)
     log_in_as(@user)

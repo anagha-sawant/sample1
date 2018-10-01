@@ -11,6 +11,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+ 
+  #newly added in chapter 12
+  def activate
+    update_columns(activated: true, activated_at: Time.zone.now)
+  end
 
   def new
     @user = User.new
