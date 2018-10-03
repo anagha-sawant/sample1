@@ -47,8 +47,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   #10th chapter
   test "should redirect destroy when not logged in" do
-    assert_no_difference 'User.count' do
-      delete user_path(@user)
+    assert_no_difference 'User.count', 'user can not be destroyed' do
+    delete user_path(@user)
     end
     assert_redirected_to login_url
 end

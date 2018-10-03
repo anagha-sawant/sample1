@@ -7,8 +7,10 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   # end
   #chapter 11
   def setup
-    #@user = users(:michael)
-    ActionMailer::Base.deliveries.clear
+
+     ActionMailer::Base.deliveries.clear
+     @user = users(:michael)
+
   end
 
   test "invalid signup information" do
@@ -32,8 +34,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          password:              "password",
                                          password_confirmation: "password" } }
     end
-
-    assert_equal 1, ActionMailer::Base.deliveries.size
+    
+    assert_equal 2, ActionMailer::Base.deliveries.size
     user = assigns(:user)
     assert_not user.activated?
     # Try to log in before activation.
